@@ -29,10 +29,3 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-
--- Remap yanking - use leader + y to yank to clipboard
--- next greatest remap ever : asbjornHaland
--- vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
--- vim.keymap.set("n", "<leader>Y", [["+Y]])
--- 
--- vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
