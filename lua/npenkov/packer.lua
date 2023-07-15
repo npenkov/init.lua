@@ -27,6 +27,7 @@ return require('packer').startup(function(use)
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
+
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
   -- treesitter
@@ -40,4 +41,43 @@ return require('packer').startup(function(use)
 	  
   -- Catoouccin theme
   use { "catppuccin/nvim", as = "catppuccin" }
+
+  -- LSP
+  use {
+	  'VonHeikemen/lsp-zero.nvim',
+	  branch = 'v1.x',
+	  requires = {
+		  -- LSP Support
+		  {'neovim/nvim-lspconfig'},
+		  {'williamboman/mason.nvim'},
+		  {'williamboman/mason-lspconfig.nvim'},
+
+		  -- Autocompletion
+		  {'hrsh7th/nvim-cmp'},
+		  {'hrsh7th/cmp-buffer'},
+		  {'hrsh7th/cmp-path'},
+		  {'saadparwaiz1/cmp_luasnip'},
+		  {'hrsh7th/cmp-nvim-lsp'},
+		  {'hrsh7th/cmp-nvim-lua'},
+
+		  -- Snippets
+		  {'L3MON4D3/LuaSnip'},
+		  {'rafamadriz/friendly-snippets'},
+	  }
+  }
+
+  -- Copilot
+  use("github/copilot.vim")
+
+  -- Status line
+  use({
+	  'glepnir/galaxyline.nvim',
+	  branch = 'main',
+	  -- your statusline
+	  config = function()
+		  require('my_statusline')
+	  end,
+	  -- some optional icons
+	  requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+  })
 end)
