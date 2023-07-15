@@ -80,4 +80,11 @@ return require('packer').startup(function(use)
 	  -- some optional icons
 	  requires = { 'nvim-tree/nvim-web-devicons', opt = true },
   })
+
+  -- DAP
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use("ldelossa/nvim-dap-projects")
+  use("theHamsta/nvim-dap-virtual-text")
+  use("nvim-telescope/telescope-dap.nvim")
+  use('leoluz/nvim-dap-go')
 end)
