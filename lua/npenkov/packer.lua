@@ -87,4 +87,11 @@ return require('packer').startup(function(use)
   use("theHamsta/nvim-dap-virtual-text")
   use("nvim-telescope/telescope-dap.nvim")
   use('leoluz/nvim-dap-go')
+
+  -- Integration with tmux
+  use({
+      "aserowy/tmux.nvim",
+      config = function() return require("tmux").setup() end
+  })
+
 end)
