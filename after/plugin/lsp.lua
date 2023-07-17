@@ -38,9 +38,33 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
-})
+-- Trigger completion with <C-Space>
+local cmp_config = {
+  completion = {
+    autocomplete = false
+  },
+  mapping = cmp_mappings,
+  formatting = {
+    -- changing the order of fields so the icon is the first
+    fields = {'menu', 'abbr', 'kind'},
+
+    -- here is where the change happens
+    format = function(entry, item)
+      local menu_icon = {
+        nvim_lsp = 'λ',
+        luasnip = '⋗',
+        buffer = 'Ω',
+        path = '🖫',
+        nvim_lua = 'Π',
+      }
+
+      item.menu = menu_icon[entry.source.name]
+      return item
+    end,
+  }
+}
+
+lsp.setup_nvim_cmp(cmp_config)
 
 lsp.set_preferences({
     suggest_lsp_servers = false,
@@ -73,3 +97,4 @@ vim.diagnostic.config({
     virtual_text = true
 })
 
+require('lspconfig').clangd.setup({})

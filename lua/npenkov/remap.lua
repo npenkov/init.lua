@@ -8,6 +8,7 @@ vim.keymap.set("n", "<C-y>", vim.cmd.NvimTreeFindFile)
 vim.keymap.set("n", "<leader>bn", vim.cmd.bnext)
 vim.keymap.set("n", "<leader>bp", vim.cmd.bprev)
 vim.keymap.set("n", "<leader>bc", vim.cmd.BufferClose)
+vim.keymap.set("n", "<leader>bac", vim.cmd.BufferCloseAllButCurrent)
 -- Re-order to previous/next
 vim.keymap.set('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>')
 vim.keymap.set('n', '<A->>', '<Cmd>BufferMoveNext<CR>')
