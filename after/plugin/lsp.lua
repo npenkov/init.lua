@@ -5,12 +5,27 @@ lsp.preset("recommended")
 lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
+  'clangd',
 })
 
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
+-- lspconfig
+local lspconfig = require('lspconfig')
+-- Rust
+lspconfig.rust_analyzer.setup({})
+-- Terraform
+lspconfig.terraformls.setup{}
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+  pattern = {"*.tf", "*.tfvars"},
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
 
+
+-- nvim-cmp
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
