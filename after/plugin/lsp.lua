@@ -13,8 +13,10 @@ lsp.nvim_workspace()
 
 -- lspconfig
 local lspconfig = require('lspconfig')
+
 -- Rust
 lspconfig.rust_analyzer.setup({})
+
 -- Terraform
 lspconfig.terraformls.setup{}
 vim.api.nvim_create_autocmd({"BufWritePre"}, {
@@ -23,6 +25,34 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
     vim.lsp.buf.format()
   end,
 })
+
+-- Python
+-- Setting up pynvim
+-- 1. Create a VIRTUAL_ENV - 
+--    ```sh
+--    python3 -m venv ~/.python-envs/pynvim/ 
+--    ```
+-- 2. Install pynvim
+--   ```sh
+--   source ~/.python-envs/pynvim/bin/activate
+--   pip install pynvim
+--   ```
+-- 3. Set the python3_host_prog to the VIRTUAL_ENV
+vim.g.python3_host_prog = '$HOME/.python-envs/pynvim/bin/python3'
+lspconfig.pylsp.setup{
+    settings = {
+        pylsp = {
+            cmd = {"pyls"};
+            cmd_env = {VIRTUAL_ENV = "$HOME/.python-envs/pynvim"};
+            plugins = {
+                pycodestyle = {
+                    ignore = {'W391'},
+                    maxLineLength = 100
+                }
+            }
+        }
+    }
+}
 
 
 -- nvim-cmp
