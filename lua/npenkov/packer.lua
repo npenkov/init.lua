@@ -94,4 +94,11 @@ return require('packer').startup(function(use)
       config = function() return require("tmux").setup() end
   })
 
+  -- Terragrunt
+  use("yorinasub17/vim-terragrunt")
+
+  -- Database access
+  use("tpope/vim-dadbod")
+  use("kristijanhusak/vim-dadbod-ui")
+
 end)
