@@ -28,7 +28,11 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "120"
 
-vim.api.nvim_set_option("clipboard","unnamed")
+if (vim.loop.os_uname().sysname == 'Darwin') then
+    vim.api.nvim_set_option("clipboard","unnamed")
+else
+    vim.api.nvim_set_option("clipboard","unnamedplus")
+end
 
 
 

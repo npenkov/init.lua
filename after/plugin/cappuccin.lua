@@ -45,10 +45,14 @@ require("catppuccin").setup({
 -- setup must be called before loading
 vim.cmd.colorscheme "catppuccin"
 -- vim.o.background = "light"
+if (vim.loop.os_uname().sysname == 'Darwin') then
+    local color_file = vim.fn.expand('npenkov/vim-color')
+    status_ok, _ = pcall(require, color_file)
 
-local color_file = vim.fn.expand('npenkov/vim-color')
-status_ok, _ = pcall(require, color_file)
-
-if not status_ok then
-	vim.notify('Failed loading ' .. color_file, vim.log.levels.ERROR)
+    if not status_ok then
+        vim.notify('Failed loading ' .. color_file, vim.log.levels.ERROR)
+    end
+else
+    vim.o.background = 'dark'
 end
+
