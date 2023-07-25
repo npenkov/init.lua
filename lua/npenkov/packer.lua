@@ -101,4 +101,13 @@ return require('packer').startup(function(use)
   use("tpope/vim-dadbod")
   use("kristijanhusak/vim-dadbod-ui")
 
+  -- Refactoring
+  use {
+      "ThePrimeagen/refactoring.nvim",
+      requires = {
+          {"nvim-lua/plenary.nvim"},
+          {"nvim-treesitter/nvim-treesitter"}
+      }
+  }
+
 end)
