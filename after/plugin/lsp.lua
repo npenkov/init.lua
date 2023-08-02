@@ -106,6 +106,7 @@ lsp.set_preferences({
     }
 })
 
+
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
@@ -119,7 +120,22 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+
+
 end)
+
+local rt = require("rust-tools")
+
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+        -- Hover actions
+        vim.keymap.set("n", "<leader>ha", rt.hover_actions.hover_actions, { buffer = bufnr })
+        -- Code action groups
+        vim.keymap.set("n", "<Leader>vcg", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+})
 
 lsp.setup()
 
@@ -128,3 +144,4 @@ vim.diagnostic.config({
 })
 
 require('lspconfig').clangd.setup({})
+require('lspconfig').kotlin_language_server.setup{}
