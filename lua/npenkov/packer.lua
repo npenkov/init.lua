@@ -141,4 +141,45 @@ return require('packer').startup(function(use)
   })
 
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
+  -- Visual mode multi selection/edit like vscode
+  use { "mg979/vim-visual-multi", branch = "master" }
+
+  -- Graphql
+  use { "jparise/vim-graphql" }
+
+  -- Nvim surround - surround text with brackets, quotes, etc
+  use({
+      "kylechui/nvim-surround",
+      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+      config = function()
+          require("nvim-surround").setup({
+              -- Configuration here, or leave empty to use defaults
+          })
+      end
+  })
+
+  -- TreeSJ - expand/collapse treesitter nodes
+  use({
+      'Wansmer/treesj',
+      requires = { 'nvim-treesitter/nvim-treesitter' },
+      config = function()
+          require('treesj').setup({--[[ your config ]]})
+      end,
+  })
+
+  -- BQF - Quick Fix Window
+  use {'kevinhwang91/nvim-bqf', ft = 'qf'}
+
+  -- optional
+  use {'junegunn/fzf', run = function()
+      vim.fn['fzf#install']()
+    end
+  }
+
+  -- optional, highly recommended
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+
+  -- GITBlame
+  use {'f-person/git-blame.nvim' }
 end)
