@@ -182,4 +182,7 @@ return require('packer').startup(function(use)
 
   -- GITBlame
   use {'f-person/git-blame.nvim' }
+
+  -- Diff view
+  use "sindrets/diffview.nvim"
 end)
