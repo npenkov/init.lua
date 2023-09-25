@@ -135,10 +135,6 @@ return require('packer').startup(function(use)
 
   -- Markdown preview
   -- install without yarn or npm
-  use({
-      "iamcco/markdown-preview.nvim",
-      run = function() vim.fn["mkdp#util#install"]() end,
-  })
 
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
@@ -176,9 +172,6 @@ return require('packer').startup(function(use)
       vim.fn['fzf#install']()
     end
   }
-
-  -- optional, highly recommended
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
   -- GITBlame
   use {'f-person/git-blame.nvim' }
