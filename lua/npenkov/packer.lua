@@ -196,4 +196,7 @@ return require('packer').startup(function(use)
           })
       end,
   })
+
+  -- FloaTerm
+  use 'voldikss/vim-floaterm'
 end)
