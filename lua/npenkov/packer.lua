@@ -119,6 +119,20 @@ return require('packer').startup(function(use)
           "nvim-telescope/telescope.nvim"
       }
   })
+
+  -- ChatGPT - Gp.nvim
+  use({
+      "robitx/gp.nvim",
+      config = function()
+          require("gp").setup()
+
+          -- or setup with your own config (see Install > Configuration in Readme)
+          -- require("gp").setup(conf)
+
+          -- shortcuts might be setup here (see Usage > Shortcuts in Readme)
+      end,
+  })
+
   use {
       "folke/which-key.nvim",
       config = function()
@@ -199,4 +213,10 @@ return require('packer').startup(function(use)
 
   -- FloaTerm
   use 'voldikss/vim-floaterm'
+
+  -- Dash-nvim
+  use({
+      'mrjones2014/dash.nvim',
+      run = 'make install',
+  })
 end)

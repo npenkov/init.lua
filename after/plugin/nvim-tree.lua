@@ -15,9 +15,14 @@ require("nvim-tree").setup({
     width = 30,
   },
   renderer = {
-    group_empty = true,
+    group_empty = false,
   },
   filters = {
     dotfiles = true,
+  },
+  actions = {
+    open_file = {
+        quit_on_open = true,
+    },
   },
 })
