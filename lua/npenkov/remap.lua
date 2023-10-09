@@ -20,7 +20,7 @@ map('n', '<S-h>', '<Cmd>BufferPrevious<CR>', nnoremap_opts)
 map('n', '<S-l>', '<Cmd>BufferNext<CR>', nnoremap_opts)
 
 -- Reload vim configuration
-map('n', '<leader>sv','<cmd>source $MYVIMRC<cr>', nnoremap_opts)
+map('n', '<leader>gg','<cmd>LazyGit<cr>', nnoremap_opts)
 
 -- telescope
 local builtin = require('telescope.builtin')
@@ -32,3 +32,5 @@ km.set('n', '<leader>fa', ':lua require"telescope.builtin".find_files({ hidden =
 
 km.set("n", "<leader>fd", "<cmd>Telescope dir live_grep<cr>", nnoremap_opts)
 km.set("n", "<leader>pd", "<cmd>Telescope dir find_files<cr>", nnoremap_opts)
+
+km.set("n", "<leader>fs", ":lua require('gfold').pick_repo()<cr>", nnoremap_opts)

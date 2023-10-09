@@ -149,12 +149,17 @@ return require('packer').startup(function(use)
 
   -- Markdown preview
   -- install without yarn or npm
-  use({
-      "iamcco/markdown-preview.nvim",
-      run = function() vim.fn["mkdp#util#install"]() end,
+  use({ 
+      "iamcco/markdown-preview.nvim", 
+      run = function() 
+          vim.fn["mkdp#util#install"]() 
+      end,
+      -- run = "cd app && npm install", 
+      setup = function() 
+          vim.g.mkdp_filetypes = { "markdown" } 
+      end, 
+      ft = { "markdown" }, 
   })
-
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
   -- Visual mode multi selection/edit like vscode
   use { "mg979/vim-visual-multi", branch = "master" }
@@ -194,6 +199,15 @@ return require('packer').startup(function(use)
   -- GITBlame
   use {'f-person/git-blame.nvim' }
 
+  -- Lazygint
+  use({
+      "kdheepak/lazygit.nvim",
+      -- optional for floating window border decoration
+      requires = {
+          "nvim-lua/plenary.nvim",
+      },
+  })
+
   -- Diff view
   use "sindrets/diffview.nvim"
 
@@ -219,4 +233,17 @@ return require('packer').startup(function(use)
       'mrjones2014/dash.nvim',
       run = 'make install',
   })
+
+  -- GFold - make sure to install from https://github.com/nickgerace/gfold
+  use {
+      "npenkov/nvim-gfold.lua",
+      branch = "feature/unpulled",
+      config = function()
+          require('gfold').setup()
+      end,
+  }
+
+  -- Replace vim select with telescope
+  use {'nvim-telescope/telescope-ui-select.nvim' }
+
 end)
