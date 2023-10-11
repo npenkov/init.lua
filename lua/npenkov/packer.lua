@@ -148,17 +148,9 @@ return require('packer').startup(function(use)
   use 'simrat39/rust-tools.nvim'
 
   -- Markdown preview
-  -- install without yarn or npm
-  use({ 
-      "iamcco/markdown-preview.nvim", 
-      run = function() 
-          vim.fn["mkdp#util#install"]() 
-      end,
-      -- run = "cd app && npm install", 
-      setup = function() 
-          vim.g.mkdp_filetypes = { "markdown" } 
-      end, 
-      ft = { "markdown" }, 
+  use({
+      "iamcco/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end,
   })
 
   -- Visual mode multi selection/edit like vscode
@@ -245,5 +237,8 @@ return require('packer').startup(function(use)
 
   -- Replace vim select with telescope
   use {'nvim-telescope/telescope-ui-select.nvim' }
+
+  -- GH-Line - Open GitHub, GitLab, etc
+  use { 'ruanyl/vim-gh-line' }
 
 end)
