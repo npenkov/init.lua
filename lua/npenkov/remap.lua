@@ -4,6 +4,7 @@ local km = vim.keymap
 
 -- vim-tree
 km.set("n", "<C-e>", vim.cmd.NvimTreeToggle)
+km.set("n", "<leader>e", vim.cmd.NvimTreeToggle)
 km.set("n", "<C-y>", vim.cmd.NvimTreeFindFile)
 
 -- buffers
@@ -18,6 +19,7 @@ local nnoremap_opts = { noremap = true, silent = true }
 -- Move to previous/next
 map('n', '<S-h>', '<Cmd>BufferPrevious<CR>', nnoremap_opts)
 map('n', '<S-l>', '<Cmd>BufferNext<CR>', nnoremap_opts)
+map('n', '<S-j>', '<Cmd>BufferClose<CR>', nnoremap_opts)
 
 -- Reload vim configuration
 map('n', '<leader>gg','<cmd>LazyGit<cr>', nnoremap_opts)

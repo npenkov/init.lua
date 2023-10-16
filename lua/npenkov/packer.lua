@@ -241,4 +241,7 @@ return require('packer').startup(function(use)
   -- GH-Line - Open GitHub, GitLab, etc
   use { 'ruanyl/vim-gh-line' }
 
+  -- Vim-todo
+  use { 'Dimercel/todo-vim' } 
+
 end)
